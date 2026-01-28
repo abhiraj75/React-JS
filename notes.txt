@@ -1,0 +1,8 @@
+React helps to provide a lightweight js object to tell the ReactDOM how the element is going look.
+
+ReactDOM helps to create the element and render it .
+
+Component is a function that returns JSX as a component.
+
+props: as in properties , used to pass data from parent to child component
+       that is a reason why we call it single binded as it can only share data in one direction.

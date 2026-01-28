@@ -31,13 +31,44 @@
 // root.render(a)
 
 
-function App(props){
+// function App(props){
+//     return <div>
+//         {props.books.map((ele)=>{
+//             return <li style={{color:"red",background:"black"}}>{ele}</li>
+//         })}
+//     </div>
+// }
+
+// const root=ReactDOM.createRoot(document.querySelector("#root"))
+// root.render(<App books={["javascript", "css", "html", "react"]}/>)
+
+function Main(){
+    return <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil veritatis, ipsam distinctio labore animi obcaecati rerum, repudiandae eum mollitia nostrum tempora illum doloremque dolores iure dicta exercitationem, consequatur adipisci laborum.    
+        </p>
+    
+}
+
+
+function Header(props){
     return <div>
-        {props.books.map((ele)=>{
-            return <li style={{color:"red",background:"black"}}>{ele}</li>
-        })}
+        <h1 style={{font_size:"45px" ,color:"red", background:"black"}}>Welcome To Polaris {props.name}</h1>
+        <p>{props.age>18?"he is an adult":"he is kid"}</p>
     </div>
 }
 
+function Footer(){
+    return <footer>Contacts</footer>
+}
+function App(){
+    return(
+        <div>
+        <Header name="Abhiraj" age={18}/>
+        <Main/>
+        <Footer/>
+        </div>
+    )
+}
+
 const root=ReactDOM.createRoot(document.querySelector("#root"))
-root.render(<App books={["javascript", "css", "html", "react"]}/>)
+root.render(<App/>)

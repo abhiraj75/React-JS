@@ -62,11 +62,11 @@ function Footer(){
 }
 function App(){
     return(
-        <div>
+        <>
         <Header name="Abhiraj" age={18}/>
         <Main/>
         <Footer/>
-        </div>
+        </>
     )
 }
 

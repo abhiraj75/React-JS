@@ -1,33 +1,34 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Task from "./Task.jsx"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [task, setTask] = useState("")
+  const [alltask,setAllTask]=useState([])
+
+  function handleSubmit(e){
+    e.preventDefault()
+    const newTask={task:task,id:Date.now()}
+    setAllTask([...alltask,newTask])
+    setTask("")
+
+  }
+
+  function deleteTask(id){
+    let deletedTasks=alltask.filter((val,i)=> val.id!==id)
+    setAllTask(deletedTasks)
+ }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div id="root">
+      <form onSubmit={handleSubmit}>
+        <input type="text" placeholder="Add Task" onChange={(e)=>setTask(e.target.value)} value={task}></input><br></br>
+        <input id="sub" type="Submit"></input>
+      </form>
+      <Task tasks={alltask} deleteTask={deleteTask}></Task>
+    </div>
+      
     </>
   )
 }
